@@ -1,0 +1,58 @@
+import React from "react";
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import DirectionsIcon from "@mui/icons-material/Directions";
+
+import CloseIcon from "@mui/icons-material/Close";
+
+type appType = {
+  value: string;
+  action: React.Dispatch<React.SetStateAction<string>>;
+};
+const SearchComponent = ({ value, action }: appType) => {
+  //hadle situation for onChange and onSubmit
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log(data.get("searchQuery"));
+    //if the lenght of the
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    action(event.target.value);
+  };
+  return (
+    <Paper
+      component="form"
+      variant="outlined"
+      noValidate
+      onSubmit={handleSubmit}
+      elevation={0}
+      sx={{
+        p: "2px 4px",
+        mx: 2,
+        borderWidth: 2,
+        borderRadius: 9,
+        display: "flex",
+        alignItems: "center",
+        width: { xs: "90%", md: "60%", lg: "60%" },
+      }}
+    >
+      <InputBase
+        sx={{ ml: 2, flex: 1 }}
+        value={value}
+        onChange={handleChange}
+        placeholder="Search for Pokemons..."
+        inputProps={{ "aria-label": "search google maps" }}
+      />
+      <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+        <SearchIcon />
+      </IconButton>
+    </Paper>
+  );
+};
+
+export default SearchComponent;
