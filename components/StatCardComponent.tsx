@@ -1,6 +1,5 @@
 import CardContent from "@mui/material/CardContent";
 import Card from "@mui/material/Card";
-import React from "react";
 import Typography from "@mui/material/Typography";
 
 type appProps = {

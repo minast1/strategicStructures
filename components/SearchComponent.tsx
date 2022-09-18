@@ -10,14 +10,6 @@ type appType = {
   action: React.Dispatch<React.SetStateAction<string>>;
 };
 const SearchComponent = ({ value, action }: appType) => {
-  //hadle situation for onChange and onSubmit
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // console.log(data.get("searchQuery"));
-    //if the lenght of the
-  };
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     action(event.target.value);
   };
@@ -26,7 +18,7 @@ const SearchComponent = ({ value, action }: appType) => {
       component="form"
       variant="outlined"
       noValidate
-      onSubmit={handleSubmit}
+      //onSubmit={handleSubmit}
       elevation={0}
       sx={{
         p: "2px 4px",

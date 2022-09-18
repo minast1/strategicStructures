@@ -5,7 +5,7 @@ export const pokemonDetails = (url: string) =>
 
 export const pokemonFetcher = (url: string) => {
   let promises: Promise<ResponseType>[] = [];
-  for (let i = 1; i <= 500; i++) {
+  for (let i = 1; i <= 800; i++) {
     let uri = `${url}/${i}`;
     promises.push(fetch(uri).then((res) => res.json()));
   }

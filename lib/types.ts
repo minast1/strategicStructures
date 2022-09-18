@@ -1,31 +1,31 @@
-export type pokeData = {
+export interface pokeData {
   name: string;
   url: string;
-};
-export type initialDataType = {
+}
+export interface initialDataType {
   count: number;
   next: string | null;
   previous: string | null;
   results: pokeData[];
-};
+}
 
-type movesType = {
+interface movesType {
   move: { name: string; url: string };
-};
+}
 
-type typesData = {
+interface typesData {
   slot: number;
   type: {
     name: string;
     url: string;
   };
-};
-export type Pokadex = {
+}
+export interface Pokadex {
   name: string;
   id: number;
   ability: string;
   image: string;
-};
+}
 interface abilitiesType {
   ability: {
     name: string;

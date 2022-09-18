@@ -1,44 +1,15 @@
-# Next.js with TypeScript example
+# Pokemon Application
 
-## How to use
-
-Download the example [or clone the repo](https://github.com/mui/material-ui):
-
-<!-- #default-branch-switch -->
-
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs-with-typescript
-cd nextjs-with-typescript
-```
-
-Install it and run:
-
-```sh
-npm install
-npm run dev
-```
-
-or:
-
-<!-- #default-branch-switch -->
-
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/nextjs-with-typescript)
-
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/nextjs-with-typescript)
-
-## The idea behind the example
+## The idea behind the solution
 
 The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5. If you prefer, you can [use styled-components instead](https://mui.com/material-ui/guides/interoperability/#styled-components).
+It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5, and vercels [SWR](https://swr.vercel.app), a data fetching react hook which plays well with Next.js data fetching strategies.
 
-## The link component
+## Overview
 
-The [example folder](https://github.com/mui/material-ui/tree/HEAD/examples/nextjs-with-typescript) provides an adapter for the use of [Next.js's Link component](https://nextjs.org/docs/api-reference/next/link) with MUI.
-More information [in the documentation](https://mui.com/material-ui/guides/routing/#next-js).
+The goal of this project is to be able to navigate the details of the different pokemon by clicking on the list
+of pokemon. I used Nextjs client side data fetching strategy to fetch initial data from the pokemon API using SWR. The index page contains the SearchComponent and the MainComponent.The SearchComponent accepts the initial data retruned by SWR as props and allows the user to filter through the various pokemon based on the requestSearch function in the SearchResultsComponent which implements optimized regex search.Every Pokemon will be displayed by the PokemonContainer Component which accepts the name, image, id and abilities of the pokemon. The PokemonContainer comopnent is a link button which redirects the user to the Pokemon details page where further details of the pokemon is displayed. The app also uses Mui CSS query selectors and flexBox to enable responsiveness across different devices. Again, all images are optimised with Nextjs Image component to allow for faster load times and improved ux .Finally ive implemented simple pagination using next/router with Javascript's Array.prototype.slice()
 
-## What's next?
+## Improvements?
 
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+Moving forward ill like to improve user experience further by changing the data fetching strategy to implement Nextjs getStaticProps and getStaticPaths as this would allow pre-rendering of pages at build time allowing faster load time of the app.
