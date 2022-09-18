@@ -38,7 +38,11 @@ const PokemonContainer = ({ name, image, ability }: Omit<Pokadex, "id">) => {
       </Typography>
       <Chip
         label={ability}
-        sx={{ width: "60%", p: 1 }}
+        sx={{
+          width: "60%",
+          p: 1,
+          boxShadow: "3px 3px 3px orange",
+        }}
         color="warning"
         size="small"
         variant="outlined"

@@ -1,5 +1,4 @@
 import React from "react";
-import { Pokadex } from "../lib/fetcher";
 import PokemonContainer from "../components/PokemonContainer";
 import Grid from "@mui/material/Grid";
 import ButtonBase from "@mui/material/ButtonBase";
@@ -7,6 +6,8 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
+import Link from "../src/Link";
+import type { Pokadex } from "../lib/types";
 
 interface AppProps {
   data: Pokadex[];
@@ -32,7 +33,11 @@ const MainComponent = ({ data }: AppProps) => {
             key={id}
             sx={{ alignItems: "center" }}
           >
-            <ButtonBase disableRipple>
+            <ButtonBase
+              disableRipple
+              component={Link}
+              href={`/pokemon/${name}`}
+            >
               <PokemonContainer name={name} image={image} ability={ability} />
             </ButtonBase>
           </Grid>
@@ -63,7 +68,7 @@ const MainComponent = ({ data }: AppProps) => {
 
         <Button
           disabled={page == 0}
-          color="warning"
+          color="success"
           variant="outlined"
           sx={{ width: "10%", borderRadius: 10 }}
           onClick={() => {

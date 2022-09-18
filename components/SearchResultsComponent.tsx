@@ -1,11 +1,11 @@
 import React from "react";
-import { Pokadex } from "../lib/fetcher";
 import PokemonContainer from "../components/PokemonContainer";
 import Grid from "@mui/material/Grid";
 import ButtonBase from "@mui/material/ButtonBase";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import type { Pokadex } from "../lib/types";
 
 interface appProps {
   data: Pokadex[];
