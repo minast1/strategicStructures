@@ -7,7 +7,7 @@ import Image from "next/image";
 import Box from "@mui/material/Box";
 import useSWR from "swr";
 import { fetcher } from "../lib/useRequest";
-import { Pokadex } from "../lib/fetcher";
+import type { Pokadex } from "../lib/types";
 
 const PokemonContainer = ({ name, image, ability }: Omit<Pokadex, "id">) => {
   return (
@@ -24,7 +24,7 @@ const PokemonContainer = ({ name, image, ability }: Omit<Pokadex, "id">) => {
       <Image src={image} width={190} height={150} alt={name} />
       <Typography
         variant="h5"
-        sx={{ fontFamily: "monospace", fontWeight: "bold" }}
+        sx={{ fontFamily: "kalam-Bold", textTransform: "capitalize" }}
       >
         {name}
       </Typography>
@@ -32,7 +32,7 @@ const PokemonContainer = ({ name, image, ability }: Omit<Pokadex, "id">) => {
         variant="body2"
         color="text.secondary"
         align="center"
-        sx={{ fontFamily: "momospace", fontWeight: "bold", color: "black" }}
+        sx={{ fontFamily: "kalam-Regular", color: "black" }}
       >
         Ability
       </Typography>

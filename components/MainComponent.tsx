@@ -36,6 +36,7 @@ const MainComponent = ({ data }: AppProps) => {
             <ButtonBase
               disableRipple
               component={Link}
+              //prefetch
               href={`/pokemon/${name}`}
             >
               <PokemonContainer name={name} image={image} ability={ability} />
@@ -61,6 +62,7 @@ const MainComponent = ({ data }: AppProps) => {
           sx={{
             width: "10%",
             borderRadius: 10,
+            fontFamily: "kalam-Bold",
           }}
         >
           Next
@@ -70,7 +72,7 @@ const MainComponent = ({ data }: AppProps) => {
           disabled={page == 0}
           color="success"
           variant="outlined"
-          sx={{ width: "10%", borderRadius: 10 }}
+          sx={{ width: "10%", borderRadius: 10, fontFamily: "kalam-Bold" }}
           onClick={() => {
             setPage(page - 1);
             router.back();

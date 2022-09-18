@@ -1,0 +1,20 @@
+@font-face {
+  font-family: kalam-Bold;
+  src: url("/fonts/Kalam-Bold.ttf");
+  format: ("ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: kalam-Regular;
+  src: url("/fonts/Kalam-Regular.ttf");
+  format: ("ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: kalam-Light;
+  src: url("/fonts/Kalam-Light.ttf");
+  format: ("ttf");
+  font-display: swap;
+}

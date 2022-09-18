@@ -1,11 +1,28 @@
-import type { ReactElement, ReactNode } from "react";
 import Head from "next/head";
 import { AppProps } from "next/app";
-import { ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
-import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
+import "../public/global.css";
+import { red } from "@mui/material/colors";
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#556cd6",
+    },
+    secondary: {
+      main: "#19857b",
+    },
+    error: {
+      main: red.A400,
+    },
+  },
+  typography: {
+    fontFamily: "kalam-Regular, kalam-Bold, kalam-Light",
+  },
+});
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

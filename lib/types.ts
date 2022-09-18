@@ -38,7 +38,7 @@ export interface ResponseType {
   species: { name: string };
   types: typesData[];
   abilities: abilitiesType[];
-  stats: { stat: { name: string; url: string } };
+  stats: { base_stat: number; stat: { name: string } }[];
   name: string;
   sprites: {
     back_default: string;
