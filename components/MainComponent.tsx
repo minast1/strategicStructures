@@ -2,12 +2,13 @@ import React from "react";
 import PokemonContainer from "../components/PokemonContainer";
 import Grid from "@mui/material/Grid";
 import ButtonBase from "@mui/material/ButtonBase";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
 import Link from "../src/Link";
 import type { Pokadex } from "../lib/types";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { theme } from "../pages/_app";
 
 interface AppProps {
   data: Pokadex[];
@@ -17,6 +18,7 @@ const MainComponent = ({ data }: AppProps) => {
   const [page, setPage] = React.useState(0);
   const [itemsPerPage, setItemsPerPage] = React.useState(16);
   const router = useRouter();
+  const isMobileScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box sx={{ flexGrow: 1, mt: 3 }}>
@@ -36,6 +38,7 @@ const MainComponent = ({ data }: AppProps) => {
             <ButtonBase
               disableRipple
               component={Link}
+              sx={{ display: "flex", justifyContent: "center" }}
               //prefetch
               href={`/pokemon/${name}`}
             >
@@ -72,7 +75,11 @@ const MainComponent = ({ data }: AppProps) => {
           disabled={page == 0}
           color="success"
           variant="outlined"
-          sx={{ width: "10%", borderRadius: 10, fontFamily: "kalam-Bold" }}
+          sx={{
+            width: isMobileScreen ? "15%" : "10%",
+            borderRadius: 10,
+            fontFamily: "kalam-Bold",
+          }}
           onClick={() => {
             setPage(page - 1);
             router.back();

@@ -18,7 +18,7 @@ const PokemonContainer = ({ name, image, ability }: Omit<Pokadex, "id">) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        width: { lg: 270 },
+        width: { lg: 270, xs: 400 },
       }}
     >
       <Image src={image} width={190} height={150} alt={name} />

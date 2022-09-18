@@ -6,6 +6,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import type { Pokadex } from "../lib/types";
+import Link from "../src/Link";
 
 interface appProps {
   data: Pokadex[];
@@ -40,7 +41,12 @@ const SearchResultsComponent = ({ data, searchQuery }: appProps) => {
               key={id}
               sx={{ alignItems: "center" }}
             >
-              <ButtonBase disableRipple>
+              <ButtonBase
+                disableRipple
+                component={Link}
+                href={`/pokemon/${name}`}
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
                 <PokemonContainer name={name} image={image} ability={ability} />
               </ButtonBase>
             </Grid>

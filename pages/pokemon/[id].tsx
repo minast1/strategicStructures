@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import React from "react";
 import { useRouter } from "next/router";
 import { pokemonDetails } from "../../lib/fetcher";
 import useSWR from "swr";
@@ -15,7 +14,6 @@ import Chip from "@mui/material/Chip";
 import Button from "@mui/material/Button";
 import StatCardComponent from "../../components/StatCardComponent";
 import Link from "../../src/Link";
-//import { useTheme } from '@mui/material/styles';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { theme } from "../_app";
 
