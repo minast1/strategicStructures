@@ -2,10 +2,7 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import DirectionsIcon from "@mui/icons-material/Directions";
-
 import CloseIcon from "@mui/icons-material/Close";
 
 type appType = {
@@ -17,7 +14,7 @@ const SearchComponent = ({ value, action }: appType) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(data.get("searchQuery"));
+    // console.log(data.get("searchQuery"));
     //if the lenght of the
   };
 
@@ -48,9 +45,19 @@ const SearchComponent = ({ value, action }: appType) => {
         placeholder="Search for Pokemons..."
         inputProps={{ "aria-label": "search google maps" }}
       />
-      <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-        <SearchIcon />
-      </IconButton>
+      {value.length >= 3 ? (
+        <IconButton
+          onClick={() => action("")}
+          sx={{ p: "10px" }}
+          aria-label="search"
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : (
+        <IconButton sx={{ p: "10px" }} aria-label="search">
+          <SearchIcon />
+        </IconButton>
+      )}
     </Paper>
   );
 };

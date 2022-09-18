@@ -1,3 +1,4 @@
+import MainComponent from "./../components/MainComponent";
 import * as React from "react";
 import type { NextPage } from "next";
 import Container from "@mui/material/Container";
@@ -14,6 +15,7 @@ import useSWR from "swr";
 import { Pokadex, pokemonFetcher } from "../lib/fetcher";
 import Loading from "../components/Loading";
 import Button from "@mui/material/Button";
+import SearchResultsComponent from "../components/SearchResultsComponent";
 
 const Home: NextPage = () => {
   const [page, setPage] = React.useState(0);
@@ -22,28 +24,10 @@ const Home: NextPage = () => {
     "https://pokeapi.co/api/v2/pokemon",
     pokemonFetcher
   );
-  const router = useRouter();
+
   const [searchQuery, setQuery] = React.useState<string>("");
   if (!data) return <Loading />;
-  if (searchQuery.length >= 3)
-    return (
-      <Container maxWidth="lg">
-        <Box
-          sx={{
-            my: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 5,
-          }}
-        >
-          <Image src={logo} alt="Pokedex Logo" height={110} width={300} />
-          <SearchComponent value={searchQuery} action={setQuery} />
-        </Box>
-        <Box>Fuck u wanna see</Box>
-      </Container>
-    );
+
   return (
     <Container maxWidth="lg">
       <Box
@@ -59,67 +43,11 @@ const Home: NextPage = () => {
         <Image src={logo} alt="Pokedex Logo" height={110} width={300} />
         <SearchComponent value={searchQuery} action={setQuery} />
       </Box>
-      <Box sx={{ flexGrow: 1, mt: 3 }}>
-        <Grid container spacing={2}>
-          {(itemsPerPage > 0
-            ? data.slice(
-                page * itemsPerPage,
-                page * itemsPerPage + itemsPerPage
-              )
-            : data
-          ).map(({ name, id, image, ability }) => (
-            <Grid
-              item
-              xs={12}
-              sm={4}
-              md={3}
-              key={id}
-              sx={{ alignItems: "center" }}
-            >
-              <ButtonBase disableRipple>
-                <PokemonContainer name={name} image={image} ability={ability} />
-              </ButtonBase>
-            </Grid>
-          ))}
-        </Grid>
-        <Box
-          display="flex"
-          flexGrow={1}
-          sx={{ p: 5 }}
-          alignItems="center"
-          justifyContent={"center"}
-          gap={2}
-        >
-          <Button
-            variant="outlined"
-            disabled={page == data.length - 1}
-            onClick={() => {
-              router.push(`/?page=${page}`, undefined, { shallow: true });
-              setPage(page + 1);
-            }}
-            sx={{
-              width: "10%",
-              borderRadius: 10,
-            }}
-          >
-            Next
-          </Button>
-
-          <Button
-            disabled={page == 0}
-            color="warning"
-            variant="outlined"
-            sx={{ width: "10%", borderRadius: 10 }}
-            onClick={() => {
-              setPage(page - 1);
-              router.back();
-              // router.push(`/?page=${page}`, undefined, { shallow: true });
-            }}
-          >
-            Previous
-          </Button>
-        </Box>
-      </Box>
+      {searchQuery.length >= 3 ? (
+        <SearchResultsComponent data={data} searchQuery={searchQuery} />
+      ) : (
+        <MainComponent data={data} />
+      )}
     </Container>
   );
 };
